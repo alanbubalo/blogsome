@@ -6,9 +6,13 @@ import { Fragment } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
+        title: 'Dashboard',
+        href: '/dashboard',
+    },
+    {
         title: 'Blogs',
         href: '/blogs',
-    },
+    }
 ];
 
 type Blog = {
@@ -19,7 +23,7 @@ type Blog = {
     is_edited: boolean;
 };
 
-export default function Blogs({ blogs }: { blogs: Blog[] }) {
+export default function BlogsList({ blogs }: { blogs: Blog[] }) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Blogs" />
@@ -28,14 +32,14 @@ export default function Blogs({ blogs }: { blogs: Blog[] }) {
                     {blogs.map((blog) => (
                         <Fragment key={blog.id}>
                             <div className="flex items-center justify-between gap-8 border-b border-b-gray-200 p-4 dark:border-b-gray-700">
-                                <div className="flex items-center gap-4">
-                                    <PlaceholderPattern className="h-12 w-12 rounded-lg border stroke-neutral-900/20 dark:stroke-neutral-100/20" />
+                                <div className="flex gap-4">
+                                    <PlaceholderPattern className="h-15 w-16 rounded-lg border stroke-neutral-900/20 dark:stroke-neutral-100/20" />
                                     <div className="flex basis-full flex-col">
                                         <div className="flex items-center gap-2">
                                             <Link href={`/blogs/${blog.id}`} className="inline-block w-fit hover:underline">
-                                                <h2 className="text-lg font-semibold">{blog.title}</h2>
+                                                <h2 className="text-lg font-semibold leading-none pb-1">{blog.title}</h2>
                                             </Link>
-                                            <span className="text-xs text-gray-500">{blog.is_edited && '(Edited)'}</span>
+                                            <span className="text-xs text-gray-500">{blog.is_edited ? "(Edited)" : ""}</span>
                                         </div>
 
                                         <p className="text-sm text-gray-500">{new Date(blog.created_at).toDateString()}</p>

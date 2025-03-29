@@ -13,5 +13,9 @@ class BlogSeeder extends Seeder
     public function run(): void
     {
         Blog::factory(15)->create();
+
+        Blog::query()->inRandomOrder()->limit(5)->update([
+            'is_edited' => true,
+        ]);
     }
 }

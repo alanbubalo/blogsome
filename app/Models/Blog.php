@@ -34,9 +34,4 @@ class Blog extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function isEdited(): bool
-    {
-        return $this->updated_at->diffInSeconds($this->created_at) > 0;
-    }
 }

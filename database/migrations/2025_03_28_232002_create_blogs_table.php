@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('content');
             $table->foreignId('user_id')->constrained('users');
+            $table->boolean('is_edited')->default(false);
             $table->timestamps();
         });
     }

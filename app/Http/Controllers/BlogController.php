@@ -12,14 +12,9 @@ class BlogController extends Controller
     {
         $blogs = Blog::query()
             ->orderBy('created_at', 'desc')
-            ->get()
-            ->map(function (Blog $blog) {
-                $blog->is_edited = $blog->isEdited();
+            ->get();
 
-                return $blog;
-            });
-
-        return Inertia::render('blogs', [
+        return Inertia::render('blogs/blogs-list', [
             'blogs' => $blogs,
         ]);
     }
