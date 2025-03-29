@@ -17,7 +17,7 @@ const mainNavItems: NavItem[] = [
         title: 'Blogs',
         href: '/blogs',
         icon: Newspaper,
-    }
+    },
 ];
 
 const footerNavItems: NavItem[] = [
