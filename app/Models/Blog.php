@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\BlogCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +15,7 @@ class Blog extends Model
         'title',
         'description',
         'content',
+        'category',
         'user_id',
     ];
 
@@ -27,6 +29,7 @@ class Blog extends Model
         return [
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
+            'category' => BlogCategory::class,
         ];
     }
 

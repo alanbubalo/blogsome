@@ -23,6 +23,7 @@ class BlogFactory extends Factory
             'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
             'content' => fake()->paragraph(),
+            'category' => fake()->randomElement(\App\Enums\BlogCategory::values()),
             'user_id' => $user->id,
         ];
     }
