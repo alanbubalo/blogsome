@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -12,9 +13,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 
-    Route::get('blogs', function () {
-        return Inertia::render('blogs');
-    })->name('blogs');
+    Route::get('blogs', [BlogController::class, 'show'])->name('blogs');
 });
 
 require __DIR__.'/settings.php';

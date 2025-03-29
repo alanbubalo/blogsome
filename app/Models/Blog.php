@@ -17,8 +17,26 @@ class Blog extends Model
         'user_id',
     ];
 
-    public function user()
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+        ];
+    }
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function isEdited(): bool
+    {
+        return $this->updated_at->diffInSeconds($this->created_at) > 0;
     }
 }
